@@ -15,13 +15,14 @@
  */
 package com.example.cupcake
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.cupcake.databinding.FragmentSummaryBinding
 import com.example.cupcake.model.OrderViewModel
 
@@ -58,18 +59,43 @@ class SummaryFragment : Fragment() {
     }
 
     /**
-     * Submit the order by sharing out the order details to another app via an implicit intent.
-     */
-    fun sendOrder() {
-        Toast.makeText(activity, "Send Order", Toast.LENGTH_SHORT).show()
-    }
-
-    /**
      * This fragment lifecycle method is called when the view hierarchy associated with the fragment
      * is being removed. As a result, clear out the binding object.
      */
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    /**
+     * Submit the order by sharing out the order details to another app via an implicit intent.
+     */
+    fun sendOrder() {
+        // カップケーキの注文数
+        val numberOfCupcakes = sharedViewModel.quantity.value ?: 0
+        // メール本文
+        val orderSummary = getString(
+            R.string.order_details,
+            resources.getQuantityString(R.plurals.cupcakes, numberOfCupcakes, numberOfCupcakes),
+            sharedViewModel.flavor.value.toString(),
+            sharedViewModel.date.value.toString(),
+            sharedViewModel.price.value.toString()
+        )
+
+        // メール送信の暗黙的インテント
+        val intent = Intent(Intent.ACTION_SEND)
+            .setType("text/plain")
+            .putExtra(Intent.EXTRA_SUBJECT, getString(R.string.new_cupcake_order))
+            .putExtra(Intent.EXTRA_TEXT, orderSummary)
+        if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
+            startActivity(intent)
+        }
+    }
+
+    fun cancelOrder() {
+        // オーダー変数を初期化
+        sharedViewModel.resetOrder()
+        // nav_graphでの画面遷移。スタート画面へ移動。
+        findNavController().navigate(R.id.action_summaryFragment_to_startFragment)
     }
 }

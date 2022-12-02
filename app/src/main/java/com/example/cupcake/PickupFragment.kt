@@ -57,18 +57,25 @@ class PickupFragment : Fragment() {
     }
 
     /**
-     * Navigate to the next screen to see the order summary.
-     */
-    fun goToNextScreen() {
-        findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
-    }
-
-    /**
      * This fragment lifecycle method is called when the view hierarchy associated with the fragment
      * is being removed. As a result, clear out the binding object.
      */
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    /**
+     * Navigate to the next screen to see the order summary.
+     */
+    fun goToNextScreen() {
+        findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
+    }
+
+    fun cancelOrder() {
+        // オーダー変数を初期化
+        sharedViewModel.resetOrder()
+        // nav_graphでの画面遷移。スタート画面へ移動。
+        findNavController().navigate(R.id.action_pickupFragment_to_startFragment)
     }
 }

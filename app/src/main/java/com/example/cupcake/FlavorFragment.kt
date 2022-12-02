@@ -57,6 +57,15 @@ class FlavorFragment : Fragment() {
     }
 
     /**
+     * This fragment lifecycle method is called when the view hierarchy associated with the fragment
+     * is being removed. As a result, clear out the binding object.
+     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+    /**
      * Navigate to the next screen to choose pickup date.
      */
     fun goToNextScreen() {
@@ -64,12 +73,10 @@ class FlavorFragment : Fragment() {
         findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 
-    /**
-     * This fragment lifecycle method is called when the view hierarchy associated with the fragment
-     * is being removed. As a result, clear out the binding object.
-     */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
+    fun cancelOrder() {
+        // オーダー変数を初期化
+        sharedViewModel.resetOrder()
+        // nav_graphでの画面遷移。スタート画面へ移動。
+        findNavController().navigate(R.id.action_flavorFragment_to_startFragment)
     }
 }

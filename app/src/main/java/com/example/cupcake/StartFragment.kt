@@ -58,6 +58,15 @@ class StartFragment : Fragment() {
     }
 
     /**
+     * This fragment lifecycle method is called when the view hierarchy associated with the fragment
+     * is being removed. As a result, clear out the binding object.
+     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+    /**
      * Start an order with the desired quantity of cupcakes and navigate to the next screen.
      */
     fun orderCupcake(quantity: Int) {
@@ -67,14 +76,5 @@ class StartFragment : Fragment() {
         }
         // flavorFragmentへ移動する
         findNavController().navigate(R.id.action_startFragment_to_flavorFragment)
-    }
-
-    /**
-     * This fragment lifecycle method is called when the view hierarchy associated with the fragment
-     * is being removed. As a result, clear out the binding object.
-     */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 }
