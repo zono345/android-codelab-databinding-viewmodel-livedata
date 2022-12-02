@@ -22,25 +22,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.cupcake.databinding.FragmentPickupBinding
+import com.example.cupcake.databinding.FragmentUserNameBinding
 import com.example.cupcake.model.OrderViewModel
 
 /**
- * [PickupFragment] allows the user to choose a pickup date for the cupcake order.
+ * [UserNameFragment] allows the user to choose a pickup date for the cupcake order.
  */
-class PickupFragment : Fragment() {
+class UserNameFragment : Fragment() {
     private val sharedViewModel: OrderViewModel by activityViewModels()
 
     // Binding object instance corresponding to the fragment_pickup.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
-    private var binding: FragmentPickupBinding? = null
+    private var binding: FragmentUserNameBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentPickupBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentUserNameBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -51,8 +51,7 @@ class PickupFragment : Fragment() {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-//            nextButton.setOnClickListener { goToNextScreen() }
-            pickupFragment = this@PickupFragment
+            userNameFragment = this@UserNameFragment
         }
     }
 
@@ -69,13 +68,13 @@ class PickupFragment : Fragment() {
      * Navigate to the next screen to see the order summary.
      */
     fun goToNextScreen() {
-        findNavController().navigate(R.id.action_pickupFragment_to_userNameFragment)
+        findNavController().navigate(R.id.action_userNameFragment_to_summaryFragment)
     }
 
     fun cancelOrder() {
         // オーダー変数を初期化
         sharedViewModel.resetOrder()
         // nav_graphでの画面遷移。スタート画面へ移動。
-        findNavController().navigate(R.id.action_pickupFragment_to_startFragment)
+        findNavController().navigate(R.id.action_userNameFragment_to_startFragment)
     }
 }
