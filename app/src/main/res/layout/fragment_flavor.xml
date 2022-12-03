@@ -86,6 +86,23 @@
                     android:checked="@{viewModel.flavor.equals(@string/coffee)}"
                     android:onClick="@{() -> viewModel.setFlavor(@string/coffee)}"
                     android:text="@string/coffee" />
+
+                <RadioButton
+                    android:id="@+id/special_taste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@{viewModel.flavor.equals(@string/special_taste)}"
+                    android:onClick="@{() -> viewModel.setFlavor(@string/special_taste)}"
+                    android:text="@string/special_taste" />
+
+                <TextView
+                    android:id="@+id/supplemental_explanation_special_taste"
+                    style="@style/Widget.Cupcake.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/side_margin"
+                    android:text="@string/supplemental_explanation_special_taste"
+                    android:textSize="@dimen/supplemental_explanation_font_size" />
             </RadioGroup>
 
             <View

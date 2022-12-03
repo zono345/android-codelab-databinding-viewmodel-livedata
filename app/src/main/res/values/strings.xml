@@ -47,4 +47,6 @@
     <string name="enter_your_name">Enter Your Name</string>
     <string name="please_enter_your_name">Please enter your name!</string>
     <string name="orderer_name">Orderer\'s Name</string>
+    <string name="special_taste">Special Taste *</string>
+    <string name="supplemental_explanation_special_taste">* This cannot be picked up on the same day.</string>
 </resources>

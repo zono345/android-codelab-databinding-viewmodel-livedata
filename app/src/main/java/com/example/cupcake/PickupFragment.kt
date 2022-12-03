@@ -40,6 +40,9 @@ class PickupFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // flavorによってdateの初期値を変更
+        setDateForSpecialTaste()
+
         val fragmentBinding = FragmentPickupBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -77,5 +80,22 @@ class PickupFragment : Fragment() {
         sharedViewModel.resetOrder()
         // nav_graphでの画面遷移。スタート画面へ移動。
         findNavController().navigate(R.id.action_pickupFragment_to_startFragment)
+    }
+
+    // Special Tasteの時は受け取り日のデフォルト値を明日へ変更
+    private fun setDateForSpecialTaste() {
+        if (isSpecialTaste()) {
+            sharedViewModel.setDate(sharedViewModel.dateOptions[1])
+        }
+    }
+
+    // special_tasteか判定
+    private fun isSpecialTaste(): Boolean {
+        val selectFlavor: String? = sharedViewModel.flavor.value
+        val specialTaste: String = resources.getString(R.string.special_taste)
+        if (selectFlavor == specialTaste) {
+            return true
+        }
+        return false
     }
 }

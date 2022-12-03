@@ -52,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="@{viewModel.date.equals(viewModel.dateOptions[0])}"
+                    android:enabled="@{!(viewModel.flavor.equals(@string/special_taste))}"
                     android:onClick="@{() -> viewModel.setDate(viewModel.dateOptions[0])}"
                     android:text="@{viewModel.dateOptions[0]}"
                     tools:text="Thursday" />
