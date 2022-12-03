@@ -28,6 +28,10 @@ class OrderViewModel : ViewModel() {
 
     val dateOptions = getPickupOptions()
 
+    // 注文者の名前
+    private val _name = MutableLiveData<String>()
+    var name: LiveData<String> = _name
+
     init {
         resetOrder()
     }
@@ -50,6 +54,10 @@ class OrderViewModel : ViewModel() {
         return _flavor.value.isNullOrEmpty()
     }
 
+    fun setUserName(userName: String) {
+        _name.value = userName
+    }
+
     private fun getPickupOptions(): List<String> {
         val options = mutableListOf<String>()
         val formatter = SimpleDateFormat("E MMM d", Locale.getDefault())
@@ -67,6 +75,7 @@ class OrderViewModel : ViewModel() {
         _flavor.value = ""
         _date.value = dateOptions[0]
         _price.value = 0.0
+        _name.value = ""
     }
 
     private fun updatePrice() {

@@ -54,6 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPersonName|textNoSuggestions"
+                    android:text="@{viewModel.name}"
+                    android:onTextChanged="@{() -> userNameFragment.setUserName()}"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 

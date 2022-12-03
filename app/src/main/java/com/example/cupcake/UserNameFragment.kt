@@ -68,6 +68,10 @@ class UserNameFragment : Fragment() {
      * Navigate to the next screen to see the order summary.
      */
     fun goToNextScreen() {
+        // 氏名入力値チェック
+        if (!isValidName()) { return }
+
+        // 画面遷移
         findNavController().navigate(R.id.action_userNameFragment_to_summaryFragment)
     }
 
@@ -77,4 +81,32 @@ class UserNameFragment : Fragment() {
         // nav_graphでの画面遷移。スタート画面へ移動。
         findNavController().navigate(R.id.action_userNameFragment_to_startFragment)
     }
+
+    // 氏名の入力値チェック
+    private fun isValidName(): Boolean {
+        val name = sharedViewModel.name.value
+        if (name == "") {
+            setErrorTextField(true)
+            return false
+        }
+        setErrorTextField(false)
+        return true
+    }
+
+    // 氏名入力欄のエラー表示更新
+    private fun setErrorTextField(error: Boolean) {
+        if (error) {
+            binding?.textField?.isErrorEnabled = true
+            binding?.textField?.error = getString(R.string.please_enter_your_name)
+        } else {
+            binding?.textField?.isErrorEnabled = false
+        }
+    }
+
+    // 注文者の氏名を記録
+    fun setUserName() {
+        sharedViewModel.setUserName(binding?.textInputEditText?.text.toString())
+    }
+
+
 }

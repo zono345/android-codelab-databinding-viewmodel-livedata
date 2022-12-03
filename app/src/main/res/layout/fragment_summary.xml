@@ -121,6 +121,31 @@
                     android:layout_marginTop="@dimen/side_margin"
                     android:layout_marginBottom="@dimen/margin_between_elements" />
 
+
+                <TextView
+                    android:id="@+id/name_label"
+                    style="@style/Widget.Cupcake.TextView.Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/orderer_name" />
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/Widget.Cupcake.TextView.OrderSummary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/order_summary_margin"
+                    android:text="@{viewModel.name}"
+                    tools:text="John Kevin" />
+
+                <View
+                    android:id="@+id/divider4"
+                    style="@style/Widget.Cupcake.Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:layout_marginBottom="@dimen/margin_between_elements" />
+
                 <TextView
                     android:id="@+id/total"
                     style="@style/Widget.Cupcake.TextView.FinalPrice"
