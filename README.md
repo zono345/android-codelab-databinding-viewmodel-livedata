@@ -5,7 +5,10 @@ Introduction
 - Android CodeLabで作ったアプリです。
 - アプリ名称: Cupcake app  
   
-### フラグメント間の共有 ViewModel ###
+対象Codelab
+------------
+
+### 1.フラグメント間の共有 ViewModel ###
 https://developer.android.com/codelabs/basic-android-kotlin-training-shared-viewmodel?hl=ja
 
 - DataBinding, ViewModel, LiveDataオブザーバーを使用してデータの変更を監視し、データの更新を即座にUIに反映させる。
@@ -15,7 +18,7 @@ https://developer.android.com/codelabs/basic-android-kotlin-training-shared-view
 解答コード  
 https://github.com/google-developer-training/android-basics-kotlin-cupcake-app/tree/viewmodel
 
-### ナビゲーションとバックスタック ###
+### 2.ナビゲーションとバックスタック ###
 https://developer.android.com/codelabs/basic-android-kotlin-training-navigation-backstack?hl=ja
 
 - アップボタンの挙動追加
@@ -26,7 +29,10 @@ https://developer.android.com/codelabs/basic-android-kotlin-training-navigation-
 解答コード  
 https://github.com/google-developer-training/android-basics-kotlin-cupcake-app
 
-
+- 自習用練習問題も実施
+  - 当日に受け取れないといった特別な条件がある特別なフレーバーを提供する。
+  - カップケーキを注文するユーザーの名前を尋ねる。
+  - 注文するカップケーキの数量が 1 個を超える場合、ユーザーがカップケーキのフレーバーを複数選択できるようにする。
   
   
 アプリ画面
