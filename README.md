@@ -38,8 +38,9 @@ https://github.com/google-developer-training/android-basics-kotlin-cupcake-app
 アプリ画面
 ----  
 ### 静止画 ###
-<img src="" width="1000">
-
-
+<img src="https://user-images.githubusercontent.com/88254716/205563201-9ad3ebb3-ff45-4ca6-8e63-ed0e7570dc4f.png" width="1000">
+<img src="https://user-images.githubusercontent.com/88254716/205563239-9ed720fe-5335-4c71-b08d-8dbec0bf4e16.png" width="1000">
+  
 ### GIF ###  
-<img src="" width="300">
+<img src="https://user-images.githubusercontent.com/88254716/205563126-52bd021d-572b-4599-b3a2-71618be4b56c.gif" width="300">
+
