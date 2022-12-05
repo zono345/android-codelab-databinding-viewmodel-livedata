@@ -1,26 +1,39 @@
-Cupcake app
-=================================
+# android-codelab-databinding-viewmodel-livedata
 
-This app contains an order flow for cupcakes with options for quantity, flavor, and pickup date.
-The order details get displayed on an order summary screen and can be shared to another app to
-send the order.
+Introduction
+------------
+- Android CodeLabで作ったアプリです。
+- アプリ名称: Cupcake app  
+  
+### フラグメント間の共有 ViewModel ###
+https://developer.android.com/codelabs/basic-android-kotlin-training-shared-viewmodel?hl=ja
 
-This app demonstrates multiple fragments in an activity, a shared ViewModel across fragments,
-data binding, LiveData, and the Jetpack Navigation component.
+- DataBinding, ViewModel, LiveDataオブザーバーを使用してデータの変更を監視し、データの更新を即座にUIに反映させる。
+- リスナーバインディングを使用して、.xmlファイル内でonClickを記述する。
+- SimpleDateFormatを使用して、日付の表示書式を変更する。
+
+解答コード  
+https://github.com/google-developer-training/android-basics-kotlin-cupcake-app/tree/viewmodel
+
+### ナビゲーションとバックスタック ###
+https://developer.android.com/codelabs/basic-android-kotlin-training-navigation-backstack?hl=ja
+
+- アップボタンの挙動追加
+- バックスタックからデスティネーションをポップする仕様を追加
+- 暗黙的インテントで注文内容をメールで送信
+- pluralsによって、数量に応じて異なる文字列リソース（単数形または複数形）を使用する
+
+解答コード  
+https://github.com/google-developer-training/android-basics-kotlin-cupcake-app
 
 
-Pre-requisites
---------------
-* Familiar with activities and fragments
-* How to use styles and themes in the UI
-* Basic understanding of Jetpack architecture components including ViewModel and LiveData
-* Data binding and binding expressions
-* Kotlin syntax basics
+  
+  
+アプリ画面
+----  
+### 静止画 ###
+<img src="" width="1000">
 
 
-Getting Started
----------------
-1. Install Android Studio, if you don't already have it.
-2. Download the sample.
-3. Import the sample into Android Studio.
-4. Build and run the sample.
+### GIF ###  
+<img src="" width="300">
