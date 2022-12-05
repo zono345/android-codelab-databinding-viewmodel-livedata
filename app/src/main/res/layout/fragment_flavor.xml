@@ -28,6 +28,8 @@
         <variable
             name="flavorFragment"
             type="com.example.cupcake.FlavorFragment" />
+
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
@@ -39,71 +41,156 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/side_margin">
 
-            <RadioGroup
-                android:id="@+id/flavor_options"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <RadioButton
-                    android:id="@+id/vanilla"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@{viewModel.flavor.equals(@string/vanilla)}"
-                    android:onClick="@{() -> viewModel.setFlavor(@string/vanilla)}"
-                    android:text="@string/vanilla" />
+                <!--                    android:visibility="@{viewModel.isMultiOrder ? View.VISIBLE : View.GONE}"-->
 
-                <RadioButton
-                    android:id="@+id/chocolate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@{viewModel.flavor.equals(@string/chocolate)}"
-                    android:onClick="@{() -> viewModel.setFlavor(@string/chocolate)}"
-                    android:text="@string/chocolate" />
+                <!-- ラジオボタン-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/radio_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{!viewModel.isMultiOrder ? View.VISIBLE : View.GONE}">
 
-                <RadioButton
-                    android:id="@+id/red_velvet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@{viewModel.flavor.equals(@string/red_velvet)}"
-                    android:onClick="@{() -> viewModel.setFlavor(@string/red_velvet)}"
-                    android:text="@string/red_velvet" />
+                    <RadioGroup
+                        android:id="@+id/flavor_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                <RadioButton
-                    android:id="@+id/salted_caramel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@{viewModel.flavor.equals(@string/salted_caramel)}"
-                    android:onClick="@{() -> viewModel.setFlavor(@string/salted_caramel)}"
-                    android:text="@string/salted_caramel" />
+                        <RadioButton
+                            android:id="@+id/vanilla"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.flavor.contains(@string/vanilla)}"
+                            android:onClick="@{() -> viewModel.setFlavor(@string/vanilla)}"
+                            android:text="@string/vanilla" />
 
-                <RadioButton
-                    android:id="@+id/coffee"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@{viewModel.flavor.equals(@string/coffee)}"
-                    android:onClick="@{() -> viewModel.setFlavor(@string/coffee)}"
-                    android:text="@string/coffee" />
+                        <RadioButton
+                            android:id="@+id/chocolate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.flavor.contains(@string/chocolate)}"
+                            android:onClick="@{() -> viewModel.setFlavor(@string/chocolate)}"
+                            android:text="@string/chocolate" />
 
-                <RadioButton
-                    android:id="@+id/special_taste"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="@{viewModel.flavor.equals(@string/special_taste)}"
-                    android:onClick="@{() -> viewModel.setFlavor(@string/special_taste)}"
-                    android:text="@string/special_taste" />
+                        <RadioButton
+                            android:id="@+id/red_velvet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.flavor.contains(@string/red_velvet)}"
+                            android:onClick="@{() -> viewModel.setFlavor(@string/red_velvet)}"
+                            android:text="@string/red_velvet" />
 
-                <TextView
-                    android:id="@+id/supplemental_explanation_special_taste"
-                    style="@style/Widget.Cupcake.TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/side_margin"
-                    android:text="@string/supplemental_explanation_special_taste"
-                    android:textSize="@dimen/supplemental_explanation_font_size" />
-            </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/salted_caramel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.flavor.contains(@string/salted_caramel)}"
+                            android:onClick="@{() -> viewModel.setFlavor(@string/salted_caramel)}"
+                            android:text="@string/salted_caramel" />
+
+                        <RadioButton
+                            android:id="@+id/coffee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.flavor.contains(@string/coffee)}"
+                            android:onClick="@{() -> viewModel.setFlavor(@string/coffee)}"
+                            android:text="@string/coffee" />
+
+                        <RadioButton
+                            android:id="@+id/special_taste"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.flavor.contains(@string/special_taste)}"
+                            android:onClick="@{() -> viewModel.setFlavor(@string/special_taste)}"
+                            android:text="@string/special_taste" />
+
+                        <TextView
+                            android:id="@+id/supplemental_explanation_special_taste"
+                            style="@style/Widget.Cupcake.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/side_margin"
+                            android:text="@string/supplemental_explanation_special_taste"
+                            android:textSize="@dimen/supplemental_explanation_font_size" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- チェックボックス -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/checkbox_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{viewModel.isMultiOrder ? View.VISIBLE : View.GONE}">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_vanilla"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{viewModel.flavor.contains(@string/vanilla)}"
+                        android:onClick="@{() -> viewModel.setFlavor(@string/vanilla)}"
+                        android:text="@string/vanilla"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_chocolate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{viewModel.flavor.contains(@string/chocolate)}"
+                        android:onClick="@{() -> viewModel.setFlavor(@string/chocolate)}"
+                        android:text="@string/chocolate"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkbox_vanilla" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_red_velvet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{viewModel.flavor.contains(@string/red_velvet)}"
+                        android:onClick="@{() -> viewModel.setFlavor(@string/red_velvet)}"
+                        android:text="@string/red_velvet"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkbox_chocolate" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_salted_caramel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{viewModel.flavor.contains(@string/salted_caramel)}"
+                        android:onClick="@{() -> viewModel.setFlavor(@string/salted_caramel)}"
+                        android:text="@string/salted_caramel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkbox_red_velvet" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_coffee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{viewModel.flavor.contains(@string/coffee)}"
+                        android:onClick="@{() -> viewModel.setFlavor(@string/coffee)}"
+                        android:text="@string/coffee"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkbox_salted_caramel" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_special_taste"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{viewModel.flavor.contains(@string/special_taste)}"
+                        android:onClick="@{() -> viewModel.setFlavor(@string/special_taste)}"
+                        android:text="@string/special_taste"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkbox_coffee" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
                 android:id="@+id/divider"
@@ -113,7 +200,7 @@
                 android:layout_marginTop="@dimen/side_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/flavor_options" />
+                app:layout_constraintTop_toBottomOf="@id/container" />
 
             <TextView
                 android:id="@+id/subtotal"

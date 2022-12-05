@@ -70,10 +70,15 @@ class StartFragment : Fragment() {
      * Start an order with the desired quantity of cupcakes and navigate to the next screen.
      */
     fun orderCupcake(quantity: Int) {
+        // 購入数のセット
         sharedViewModel.setQuantity(quantity)
+
+        // flavorのセット
         if (sharedViewModel.hasNoFlavorSet()) {
             sharedViewModel.setFlavor(getString(R.string.vanilla))
         }
+        sharedViewModel.initFlavor()
+
         // flavorFragmentへ移動する
         findNavController().navigate(R.id.action_startFragment_to_flavorFragment)
     }

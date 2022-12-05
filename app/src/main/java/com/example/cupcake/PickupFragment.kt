@@ -91,9 +91,8 @@ class PickupFragment : Fragment() {
 
     // special_tasteか判定
     private fun isSpecialTaste(): Boolean {
-        val selectFlavor: String? = sharedViewModel.flavor.value
         val specialTaste: String = resources.getString(R.string.special_taste)
-        if (selectFlavor == specialTaste) {
+        if (sharedViewModel.flavor.value?.contains(specialTaste) == true) {
             return true
         }
         return false

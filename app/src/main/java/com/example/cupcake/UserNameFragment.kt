@@ -69,7 +69,9 @@ class UserNameFragment : Fragment() {
      */
     fun goToNextScreen() {
         // 氏名入力値チェック
-        if (!isValidName()) { return }
+        if (!isValidName()) {
+            return
+        }
 
         // 画面遷移
         findNavController().navigate(R.id.action_userNameFragment_to_summaryFragment)
@@ -107,6 +109,4 @@ class UserNameFragment : Fragment() {
     fun setUserName() {
         sharedViewModel.setUserName(binding?.textInputEditText?.text.toString())
     }
-
-
 }

@@ -86,8 +86,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/order_summary_margin"
-                    android:text="@{viewModel.flavor}"
+                    android:text="@{viewModel.outputFlavorString()}"
                     tools:text="Chocolate" />
+                <!--                    android:text="@{viewModel.flavor.toString()}"-->
 
                 <View
                     android:id="@+id/divider2"
