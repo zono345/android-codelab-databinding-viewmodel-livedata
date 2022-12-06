@@ -34,6 +34,14 @@ https://github.com/google-developer-training/android-basics-kotlin-cupcake-app
   - カップケーキを注文するユーザーの名前を尋ねる。
   - 注文するカップケーキの数量が 1 個を超える場合、ユーザーがカップケーキのフレーバーを複数選択できるようにする。
   
+### 3.ViewModel と LiveData をテストする ###
+https://developer.android.com/codelabs/android-basics-kotlin-test-viewmodel-and-livedata?hl=ja
+  
+- 学習内容
+  - LiveData テストの設定方法。
+  - LiveData 自体をテストする方法。
+  - 変換された LiveData をテストする方法。
+  - 単体テストで LiveData を監視する方法。
   
 アプリ画面
 ----  
