@@ -25,6 +25,7 @@ class OrderViewModel : ViewModel() {
 
     private val _price = MutableLiveData<Double>()
     val price: LiveData<String> = Transformations.map(_price) {
+        // Format the price into the local currency and return this as LiveData<String>
         NumberFormat.getCurrencyInstance().format(it)
     }
 
